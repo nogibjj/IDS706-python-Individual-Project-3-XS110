@@ -3,10 +3,9 @@ import requests
 import os
 from dotenv import load_dotenv
 
+# Load environment variables from .env
 load_dotenv()
-# access_token = 'dapibe6b6b7d919ecaa947dba7878ea0e737-3' #os.getenv("DATABRICKS_TOKEN")
-# job_id = '81593008487214'#os.getenv("JOB_ID")
-# server_h = os.getenv("DATABRICKS_HOST")
+
 # Replace with your environment variables or provide the actual values
 server_hostname = os.getenv("DATABRICKS_HOST")
 job_id = os.getenv("JOB_ID")

@@ -228,7 +228,9 @@ These 3 python scripts are stored in `notebook`
 
 To automate the data pipeline with a Databricks job , I created this `Songs_workflow_2`
 
-![Alt text](image-2.png)
+![Alt text](image-11.png)
+It runs successfully
+![Alt text](image-12.png)
 
 ## Step 4: Automate triggering the job
 
@@ -239,20 +241,22 @@ job:
 
 ```
 
-I also created a `trigger.py` to implement an automated trigger to initiate the ETL pipeline using GitHub Actions. The host name, access token and job id are saved in secrets in github.
+I also created a `trigger.py` to implement an automated trigger to initiate the ETL pipeline using GitHub Actions commit&push. The host name, access token and job id are saved in secrets in github.
 
 ```python
-# When the trigger is activated
+# When commit&push, trigger the jobs automatically
 import requests
 import os
 from dotenv import load_dotenv
 
+# Load environment variables from .env
 load_dotenv()
-access_token = os.getenv("DATABRICKS_TOKEN")
-job_id = os.getenv("JOB_ID")
-server_h = os.getenv("DATABRICKS_HOST")
 
-url = f'https://{server_h}/api/2.0/jobs/run-now'
+# Replace with your environment variables or provide the actual values
+server_hostname = os.getenv("DATABRICKS_HOST")
+job_id = os.getenv("JOB_ID")
+access_token = os.getenv("DATABRICKS_TOKEN")
+url = f'https://{server_hostname}/api/2.0/jobs/run-now'
 
 headers = {
     'Authorization': f'Bearer {access_token}',
@@ -278,7 +282,10 @@ else:
 
 ### Video
 
-Here is the results of the Songs_workflow_2, it is saved in [read.md](https://github.com/nogibjj/IDS706-Databricks-Pipeline-XS110/blob/main/result.md).
+[Youtube]()
+
+### Data visualization and summary
+Here is the results of the Songs_workflow_2, it is saved in [result.md](https://github.com/nogibjj/IDS706-Databricks-Pipeline-XS110/blob/main/result.md).
 ![Alt text](image-9.png)
 Data Visualization- Number of songs in each year
 ![Alt text](image-8.png)
