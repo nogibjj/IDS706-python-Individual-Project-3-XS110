@@ -4,8 +4,8 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-access_token = os.getenv("DATABRICKS_TOKEN")
-job_id = os.getenv("JOB_ID")
+access_token = 'dapibe6b6b7d919ecaa947dba7878ea0e737-3' #os.getenv("DATABRICKS_TOKEN")
+job_id = '81593008487214'#os.getenv("JOB_ID")
 server_h = os.getenv("DATABRICKS_HOST")
 
 url = f'https://adb-957366424816979.19.azuredatabricks.net/api/2.0/jobs/run-now'
