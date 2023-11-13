@@ -4,11 +4,14 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-access_token = 'dapibe6b6b7d919ecaa947dba7878ea0e737-3' #os.getenv("DATABRICKS_TOKEN")
-job_id = '81593008487214'#os.getenv("JOB_ID")
-server_h = os.getenv("DATABRICKS_HOST")
-
-url = f'https://{server_h}/api/2.0/jobs/run-now'
+# access_token = 'dapibe6b6b7d919ecaa947dba7878ea0e737-3' #os.getenv("DATABRICKS_TOKEN")
+# job_id = '81593008487214'#os.getenv("JOB_ID")
+# server_h = os.getenv("DATABRICKS_HOST")
+# Replace with your environment variables or provide the actual values
+server_hostname = os.getenv("DATABRICKS_HOST")
+job_id = os.getenv("DATABRICKS_HTTP_PATH")
+access_token = os.getenv("DATABRICKS_TOKEN")
+url = f'https://{server_hostname}/api/2.0/jobs/run-now'
 
 headers = {
     'Authorization': f'Bearer {access_token}',
