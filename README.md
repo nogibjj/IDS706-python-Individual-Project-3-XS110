@@ -218,7 +218,9 @@ with open("result.md", "w") as f:
     f.write(top_DJ_md)
 print(f"Summary report saved to result.md")
 ```
-These 3 python scripts are stored in `mylib`
+These 3 python scripts are stored in `notebook`
+
+
 
 ## Step 3: Build a Databricks job to run the pipeline
 

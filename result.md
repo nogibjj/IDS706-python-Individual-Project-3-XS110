@@ -76,25 +76,19 @@
 | 72 |   1928 |           4 |
 | 73 |   1927 |           2 |
 
-# bar plot
-
-
-![Number of Songs Each Year](/Workspace/Users/xs110@duke.edu/image/num_songs_per_year.png)
-
-
 # Top artists
 |    | artist_name                         |   num_songs |   year |
 |---:|:------------------------------------|------------:|-------:|
 |  0 | Beastie Boys                        |          10 |   1994 |
 |  1 | Roebeck                             |           8 |   2010 |
-|  2 | Darla Farmer                        |           8 |   2009 |
-|  3 | Maximo Park                         |           8 |   2009 |
-|  4 | Calvin Harris                       |           8 |   2007 |
-|  5 | Lucky Fonz III                      |           8 |   2007 |
-|  6 | Low Low Low La La La Love Love Love |           8 |   2007 |
-|  7 | Susana Félix                        |           8 |   2006 |
+|  2 | Maximo Park                         |           8 |   2009 |
+|  3 | Darla Farmer                        |           8 |   2009 |
+|  4 | Lucky Fonz III                      |           8 |   2007 |
+|  5 | Low Low Low La La La Love Love Love |           8 |   2007 |
+|  6 | Calvin Harris                       |           8 |   2007 |
+|  7 | Ordo Rosarius Equilibrio            |           8 |   2006 |
 |  8 | Shinobu                             |           8 |   2006 |
-|  9 | Ordo Rosarius Equilibrio            |           8 |   2006 |
+|  9 | Susana Félix                        |           8 |   2006 |
 
 # Top DJs
 |    | artist_name                             | title                                        |   tempo |
