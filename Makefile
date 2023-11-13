@@ -18,6 +18,8 @@ refactor: format lint
 
 deploy:
 	#deploy goes here
-	
+job:
+	python trigger.py
+
 all: install lint test format deploy
 
