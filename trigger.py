@@ -9,22 +9,24 @@ load_dotenv()
 # server_h = os.getenv("DATABRICKS_HOST")
 # Replace with your environment variables or provide the actual values
 server_hostname = os.getenv("DATABRICKS_HOST")
-job_id = os.getenv("DATABRICKS_HTTP_PATH")
+job_id = os.getenv("JOB_ID")
 access_token = os.getenv("DATABRICKS_TOKEN")
 url = f'https://{server_hostname}/api/2.0/jobs/run-now'
+print(server_hostname)
+print(job_id)
+print(access_token)
+# headers = {
+#     'Authorization': f'Bearer {access_token}',
+#     'Content-Type': 'application/json',
+# }
 
-headers = {
-    'Authorization': f'Bearer {access_token}',
-    'Content-Type': 'application/json',
-}
+# data = {
+#     'job_id': job_id
+# }
 
-data = {
-    'job_id': job_id
-}
+# response = requests.post(url, headers=headers, json=data)
 
-response = requests.post(url, headers=headers, json=data)
-
-if response.status_code == 200:
-    print('Job run successfully triggered')
-else:
-    print(f'Error: {response.status_code}, {response.text}')
+# if response.status_code == 200:
+#     print('Job run successfully triggered')
+# else:
+#     print(f'Error: {response.status_code}, {response.text}')
