@@ -274,6 +274,8 @@ else:
 
 [![CI](https://github.com/nogibjj/IDS706-python-Individual-Project-3-XS110/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706-python-Individual-Project-3-XS110/actions/workflows/cicd.yml)
 
+### Video
+
 Here is the results of the Songs_workflow_2, it is saved in [read.md](https://github.com/nogibjj/IDS706-Databricks-Pipeline-XS110/blob/main/result.md).
 ![Alt text](image-9.png)
 Data Visualization- Number of songs in each year
