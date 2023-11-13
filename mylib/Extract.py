@@ -1,7 +1,4 @@
 # Databricks notebook source
-
-# COMMAND ----------
-
 from pyspark.sql.types import DoubleType, IntegerType, StringType, StructType, StructField
 
 # Define variables used in the code below
