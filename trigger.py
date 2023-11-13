@@ -8,7 +8,7 @@ access_token = os.getenv("DATABRICKS_TOKEN")
 job_id = os.getenv("JOB_ID")
 server_h = os.getenv("DATABRICKS_HOST")
 
-url = f'https://adb-957366424816979.19.azuredatabricks.net/api/2.0/jobs/run-now'
+url = f'https://{server_h}/api/2.0/jobs/run-now'
 
 headers = {
     'Authorization': f'Bearer {access_token}',
