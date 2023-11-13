@@ -4,41 +4,47 @@
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC -- Which artists released the most songs each year?
-# MAGIC SELECT
-# MAGIC   artist_name,
-# MAGIC   count(artist_name)
-# MAGIC AS
-# MAGIC   num_songs,
-# MAGIC   year
-# MAGIC FROM
-# MAGIC   prepare_songs_data
-# MAGIC WHERE
-# MAGIC   year > 0
-# MAGIC GROUP BY
-# MAGIC   artist_name,
-# MAGIC   year
-# MAGIC ORDER BY
-# MAGIC   num_songs DESC,
-# MAGIC   year DESC
-# MAGIC
+# Usage of Spark SQL for data transformations
+Num_songs_year = spark.sql("""
+    SELECT
+    year,
+    count(artist_name) AS num_songs
+    FROM
+    prepare_songs_data
+    WHERE
+    year > 0
+    GROUP BY
+    year
+    ORDER BY
+    year DESC
+""").toPandas()
+
+Num_songs_year
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC  -- Find songs for your DJ list
-# MAGIC  SELECT
-# MAGIC    artist_name,
-# MAGIC    title,
-# MAGIC    tempo
-# MAGIC  FROM
-# MAGIC    prepare_songs_data
-# MAGIC  WHERE
-# MAGIC    time_signature = 4
-# MAGIC    AND
-# MAGIC    tempo between 100 and 140
-# MAGIC    ORDER BY tempo DESC;
+# Proper error handling
+row = Num_songs_year.count()[1]
+if row>0:
+    print(f"Data validation passed. {row} rows available.")
+else:
+    print("No data queried")
+
+# COMMAND ----------
+
+# Visualization of the transformed data
+# Plot a bar plot
+plt.figure(figsize=(15, 8))
+plt.bar(Num_songs_year["year"], Num_songs_year["num_songs"], color='skyblue')
+plt.title("Number of songs for Each Year")
+plt.xlabel("Year")
+plt.ylabel("Number of songs")
+plt.show()
+# Save the figure
+plot_path = "/dbfs/FileStore/IDS706_Data_Pipeline/num_songs_per_year.png"
+plt.savefig(plot_path)
+plt.close()
+
 
 # COMMAND ----------
 
@@ -99,10 +105,13 @@ top_DJ_pandas = top_DJ.toPandas()
 # Convert Pandas DataFrame to Markdown format
 top_artists_md = tabulate(top_artists_pandas, tablefmt="pipe", headers="keys")
 top_DJ_md = tabulate(top_DJ_pandas, tablefmt="pipe", headers="keys")
-
+Num_songs_year_md = tabulate(Num_songs_year, tablefmt="pipe", headers="keys")
 # Write to result.md
 with open("result.md", "w") as f:
-    f.write("# Top artists\n")
-    f.write(top_artists_md)
+    f.write("# Number of songs for Each Year\n")
+    f.write(Num_songs_year_md)
+    f.write("\n\n# Top artists\n")
+    f.write(top_artists_md)  
     f.write("\n\n# Top DJs\n")
     f.write(top_DJ_md)
+print(f"Summary report saved to result.md")

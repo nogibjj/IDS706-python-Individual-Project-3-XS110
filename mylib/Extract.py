@@ -1,15 +1,4 @@
 # Databricks notebook source
-#display(dbutils.fs.ls('dbfs:/FileStore/tables'))
-display(dbutils.fs.ls('/databricks-datasets/songs/data-001/'))
-
-# COMMAND ----------
-
-f = open('/dbfs/databricks-datasets/songs/README.md', 'r')
-print(f.read())
-
-# COMMAND ----------
-
-
 
 # COMMAND ----------
 
