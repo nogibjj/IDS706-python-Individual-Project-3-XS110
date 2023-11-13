@@ -11,6 +11,7 @@ uvicorn==0.18.3
 #script
 pandas==2.0.3
 matplotlib==3.7.2
-
+databricks-sql-connector
+python-dotenv
 
 
