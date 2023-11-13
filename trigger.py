@@ -1,4 +1,4 @@
-# When the trigger is activated
+# When commit&push, trigger the jobs automatically
 import requests
 import os
 from dotenv import load_dotenv
