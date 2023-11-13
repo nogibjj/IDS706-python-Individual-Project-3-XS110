@@ -59,7 +59,7 @@ schema = StructType(
   .toTable(table_name)
 )
 ```
-- Create  `Transform_load.py` to transform the raw source data and write the transformed data to a Delta table.
+- Create  `Transform_load.py` to transform the raw source data and write the transformed data to a Delta table. 
 ```sql
 %sql
 CREATE OR REPLACE TABLE Prepare_songs_data
@@ -94,7 +94,10 @@ FROM
   raw_song_data
 ```
 
-- Create `query.py` to query the transformed data and do data visualization.
+- Create `query.py` to query the transformed data and do data visualization. Here I also perform proper data validation checks and utilized Sparl SQL for data transformation, ensuring correctness and efficiency. 
+
+I created visualization and tables of the transformed data to communicate results effectively.
+
 
 ```python
 # Databricks notebook source
@@ -225,13 +228,57 @@ To automate the data pipeline with a Databricks job , I created this `Songs_work
 
 ![Alt text](image-2.png)
 
+## Step 4: Automate triggering the job
+
+I modified the Makefile,
+```Makefile
+job:
+	python trigger.py
+
+```
+
+I also created a `trigger.py` to implement an automated trigger to initiate the ETL pipeline using GitHub Actions. The host name, access token and job id are saved in secrets in github.
+
+```python
+# When the trigger is activated
+import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+access_token = os.getenv("DATABRICKS_TOKEN")
+job_id = os.getenv("JOB_ID")
+server_h = os.getenv("DATABRICKS_HOST")
+
+url = f'https://{server_h}/api/2.0/jobs/run-now'
+
+headers = {
+    'Authorization': f'Bearer {access_token}',
+    'Content-Type': 'application/json',
+}
+
+data = {
+    'job_id': job_id
+}
+
+response = requests.post(url, headers=headers, json=data)
+
+if response.status_code == 200:
+    print('Job run successfully triggered')
+else:
+    print(f'Error: {response.status_code}, {response.text}')
+```
+
+
 ## Results
 
-[![CI](https://github.com/nogibjj/IDS706-Databricks-Pipeline-XS110/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706-Databricks-Pipeline-XS110/actions/workflows/cicd.yml)
-Here is the results of the Songs_workflow, it is saved in [read.md](https://github.com/nogibjj/IDS706-Databricks-Pipeline-XS110/blob/main/result.md).
+[![CI](https://github.com/nogibjj/IDS706-python-Individual-Project-3-XS110/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706-python-Individual-Project-3-XS110/actions/workflows/cicd.yml)
 
-Data Visualization
+Here is the results of the Songs_workflow_2, it is saved in [read.md](https://github.com/nogibjj/IDS706-Databricks-Pipeline-XS110/blob/main/result.md).
+![Alt text](image-9.png)
+Data Visualization- Number of songs in each year
 ![Alt text](image-8.png)
+![Alt text](image-10.png)
 Which artists released the most songs each year
 ![Alt text](image-5.png)
 
