@@ -94,7 +94,7 @@ FROM
   raw_song_data
 ```
 
-- Create `query.py` to query the transformed data and do data visualization. Here I also perform proper data validation checks and utilized Sparl SQL for data transformation, ensuring correctness and efficiency. 
+- Create `query.py` to query the transformed data and do data visualization. Here I also perform proper data validation checks and utilized Spark SQL for data transformation, ensuring correctness and efficiency. 
 
 I created visualization and tables of the transformed data to communicate results effectively.
 
@@ -282,10 +282,10 @@ else:
 
 ### Video
 
-[Youtube]()
+[Youtube](https://www.youtube.com/watch?v=6v5sQfC8QhY)
 
 ### Data visualization and summary
-Here is the results of the Songs_workflow_2, it is saved in [result.md](https://github.com/nogibjj/IDS706-Databricks-Pipeline-XS110/blob/main/result.md).
+Here is the results of the Songs_workflow_2, it is saved in [result.md](https://github.com/nogibjj/IDS706-python-Individual-Project-3-XS110/blob/main/result.md).
 ![Alt text](image-9.png)
 Data Visualization- Number of songs in each year
 ![Alt text](image-8.png)
